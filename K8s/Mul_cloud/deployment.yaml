@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inference
+  labels:
+    app: inference
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: inference
+      run: inference
+  template:
+    metadata:
+      labels:
+        app: inference
+        run: inference
+    spec:
+      volumes:
+      - name: mlata
+        hostPath:
+          path: /root/tensor_mnt
+      containers:
+      - name: demo-serving
+        image: sys-z-test-docker-local.artifactory.swg-devops.com/demo-serving:x86
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 6666
+      - name: tensorboard
+        image: tensorboard:x86
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 6006
+        volumeMounts:
+        - name: mlata
+          mountPath: /tmp
