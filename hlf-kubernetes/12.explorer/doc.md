@@ -1,0 +1,1 @@
+kubectl port-forward services/explorer 5000:8080

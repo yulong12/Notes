@@ -1,0 +1,30 @@
+---
+#---------------- Chaincode Deployment ---------------------
+apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
+kind: Deployment
+metadata:
+  name: chaincode-basic-org3
+  labels:
+    app: chaincode-basic-org3
+spec:
+  selector:
+    matchLabels:
+      app: chaincode-basic-org3
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: chaincode-basic-org3
+    spec:
+      containers:
+        - image: image-registry.openshift-image-registry.svc:5000/fabric/tcmpcc:v1.0
+          name: chaincode-basic-org3
+          imagePullPolicy: Always
+          env:
+            - name: CHAINCODE_ID
+              value: "basic:862d00d141cdbfff4573cef92f6c107d08c2577939f52b3d136133f5dab62db1"
+            - name: CHAINCODE_SERVER_ADDRESS
+              value: "0.0.0.0:7052"
+          ports:
+            - containerPort: 7052
