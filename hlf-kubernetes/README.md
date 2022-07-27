@@ -130,7 +130,10 @@ basic:82699333db3ddf87d38d46bc0f7543ac6e93aad055c298ab36a7823d94c60460
 peer0Org3
 basic:862d00d141cdbfff4573cef92f6c107d08c2577939f52b3d136133f5dab62db1
 ```
-
+10.1 创建chaincode服务
+```
+oc apply -f 9.cc-deploy
+```
 11,approve chaincode peer0-org1
 ```
 peer lifecycle chaincode approveformyorg --channelID mychannel --name basic --version 1.0 --init-required --package-id basic:7df26f74ecb2f1e62c44c8358add49f982fa974fd0499358f278a0da853a2381 --sequence 1 -o orderer:7050 --tls --cafile $ORDERER_CA 
