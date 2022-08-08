@@ -265,3 +265,25 @@ $ ansible -m [module] -a "[module options]" --limit 'all:!host1'
 ```
 $ ansible -m [module] -a "[module options]" --limit 'group1'
 ```
+
+### 从本地复制文件到远程机器
+https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html
+```
+- name: Copy file from local to remote
+  ansible.builtin.copy:
+    src: /opt/software/ansible/Automation/temp/text.txt
+    dest: /opt/software/demo
+    owner: root
+    group: root
+    mode: u+rwx
+```
+### 从远程机器复制文件到本地
+https://docs.ansible.com/ansible/latest/collections/ansible/builtin/fetch_module.html#ansible-collections-ansible-builtin-fetch-module
+
+```
+- name: Copy file from remote to local
+  ansible.builtin.fetch:
+    src: /opt/software/demo/text.txt
+    dest: /opt/software/ansible/Automation/temp/
+    flat: yes
+```
