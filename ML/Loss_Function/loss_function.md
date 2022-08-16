@@ -8,16 +8,16 @@
 ## 均方误差（L2损失）
 &ensp;&ensp;&ensp;&ensp;均方误差(MSE)是最常用的回归损失函数，计算方法是求预测值与真实值之间距离的平方和  
 
-<img src="./images/MSE.png" width="200px" ext-align:center />  
+<img src="./images/MSE.png" width="300px" ext-align:center />  
 
 ## 平均绝对值误差（L1损失）
 &ensp;&ensp;&ensp;&ensp;平均绝对误差（MAE）是另一种用于回归模型的损失函数。MAE是目标值和预测值之差的绝对值之和  
-<img src="./images/MAE.png" width="200px" ext-align:center /> 
+<img src="./images/MAE.png" width="300px" ext-align:center /> 
 
 ## 对数损失函数（logarithmic loss function）
 &ensp;&ensp;&ensp;&ensp; 对数损失函数用到了极大似然估计的思想，我们对p(y|x)通俗的解释就是：  
 &ensp;&ensp;&ensp;&ensp;在当前模型的基础上，对于样本x它的预测值为y，也就是我们预测正确的概率，但是我们在概率之间的同时满足需要使用乘法，考虑到计算方便，我们取对数将其转化为加法，同时由于是损失函数，所以预测正确的概率越高，其损失值应该是越小，因此再加个负号取反。  
-<img src="./images/logarithmic.png" width="200px" ext-align:center /> 
+<img src="./images/logarithmic.png" width="300px" ext-align:center /> 
 
 函数特点：
 - log损失函数能够很好的表示概率分布，适用于很多的分类场景中，如果需要知道结果属于每个类别的置信度log损失函数非常适合。
@@ -26,7 +26,7 @@
 # 适用于分类任务的损失函数
 ## 0-1损失函数（0-1 loss function）
 &ensp;&ensp;&ensp;&ensp;关于0-1损失函数，也就是说当我们预测错误时，损失函数的值为1，预测正确时，损失函数的值为0，该函数无需考虑预测值和真实值的误差程度，只要预测错误就会输出1。
-<img src="./images/01.png" width="200px" ext-align:center />   
+<img src="./images/01.png" width="300px" ext-align:center />   
 &ensp;&ensp;&ensp;&ensp;0-1损失函数直接对应分类判断错误的个数，但是它是一个非凸函数，不太适用  
 # 其他损失函数
 ## Huber损失，平滑的平均绝对误差
