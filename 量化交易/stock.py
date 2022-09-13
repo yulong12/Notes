@@ -1,28 +1,3 @@
-## 常用股票量化指标
-![avatar](./images/常用股票量化指标.png)
-## 量化交易系统的组成
-![avatar](./images/量化交易系统的组成.png)
-## 股票的由来
-股票是股份公司发行的所有权凭证，是一种投资工具、投资介质
-
-## 股票的特性
-- 股票=》股份公司的所有权凭证、盈亏自负  
-- 基金=》投资组合（股票、债券、现金）  
-- 债券=》还本付息的有价证券（国债、企业债、金融债券）
-风险： 股票（10%）>基金（5%）>债券（1%）
-收益： 股票>基金>债券
-
-## 使用JQData获取行情数据
-
-### 如何获取股票数据
-![avatar](./images/如何获取股票数据.png)
-
-
-###  使用JQData获取行情数据
-![avatar](./images/getJQdata.png)
-
-### 使用resample函数转化为时间序列
-```
 
 from jqdatasdk import *
 import pandas as pd
@@ -54,5 +29,3 @@ df_week['volume(sum)']=df['volume'].resample('W').sum()
 df_week['money(sum)']=df['money'].resample('W').sum()
 
 print(df_week)
-
-```
