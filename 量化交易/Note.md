@@ -56,3 +56,28 @@ df_week['money(sum)']=df['money'].resample('W').sum()
 print(df_week)
 
 ```
+### 财务报表
+资产负债表：体现企业家底和负债情况
+利润表：公司盈利能力，赚了多少、怎么赚的，隐含着对未来利润增长的预期，体现市场空间，成长能力
+现金流量表： 权责发生制VS收付实现制，体现造血能力，竞争优势，议价优势
+
+#### 利用财务报表数据选股
+```
+# 获取财务指标数据
+df=get_fundamentals(query(indicator),statDate='2021')
+# 基于盈利指标选股：eps，operating_profit,roe,inc_net_profit_year_on_year
+df=df[(df['eps']>0)&(df['operating_profit']>2212173617)&(df['roe']>11)&(df['inc_net_profit_year_on_year'])>10]
+print(df)
+```
+
+### 有哪些估值方法
+#### 绝对估值法
+定价模型：计算企业的内在价值
+#### 相对估值法
+![avatar](./images/相对估值法.png)
+
+## 量化交易系统
+![avatar](./images/量化交易平台功能模块.png)
+
+### 代码实操
+![avatar](./images/代码实操.png)
