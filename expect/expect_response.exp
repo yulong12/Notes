@@ -1,0 +1,9 @@
+#!/usr/bin/expect
+spawn ./interactive_script.sh
+expect "Hello, who is this?\r"
+send -- "小明\r"
+expect "What's your favorite color?\r"
+send -- "蓝色\r"
+expect "How many cats do you have?\r"
+send -- "1个\r"
+expect eof

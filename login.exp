@@ -1,0 +1,28 @@
+#!/usr/bin/expect
+set jenkins 9.30.194.184
+set jenkinsUser vncuser1
+set userPassword vncuser1
+set jenkinsRoot root
+set jenkinsRootPassword cdpJenkins123!!!
+
+
+set splunk 9.30.207.146
+set splunkRoot root
+set splunkRootPassword cdpSplunk123!!!
+
+set kafka 9.30.218.59 
+set kafkaRoot root
+set kafkaRootPassword cdpKafkaMaster123!!!
+
+set elk1 9.30.34.42 
+set elk1User ZYL
+set userPassword ZYLdemo
+set elk1Root root
+set elk1RootPassword cdpELKMaster123!!!
+
+set elk2 9.30.44.132
+set elk3 9.30.216.175
+set elk4 9.30.216.220
+
+
+set password cdpJenkins123!!!

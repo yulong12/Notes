@@ -1,0 +1,13 @@
+#!/usr/bin/expect
+send_user "#########ansiser#########\n"
+set NAME "Li Ming"
+set COLOR "Blue"
+set NUMBER [lindex $argv 0]
+spawn ./interactive_script.sh
+expect "Hello, who is this?\r"
+send -- "$NAME\r"
+expect "What's your favorite color?\r"
+send -- "$COLOR\r"
+expect "How many cats do you have?\r"
+send -- "$NUMBER\r"
+expect eof
