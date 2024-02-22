@@ -4,8 +4,8 @@ import pytube
 import os
 import string
 
-Base_PATH = "/opt/software/ansible/pythonDemo/video"
-listUrl="https://www.youtube.com/playlist?list=PLEkRYDcpWohzyea73KQzskcV8q3KrRu6N"
+Base_PATH = "/Users/yulong/Documents/video"
+# listUrl="https://www.youtube.com/playlist?list=PLEkRYDcpWohzyea73KQzskcV8q3KrRu6N"
 
 # 所有的英文标点符号替换为_： !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 def stringClean(str):
