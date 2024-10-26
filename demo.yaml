@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1  
+kind: Ingress  
+metadata:  
+  name: frontend  
+  namespace: hacker-company  
+  annotations:  
+    kubernetes.io/ingress.class: "traefik"  
+spec:  
+  rules:  
+  - http:  
+      paths:  
+      - path: /  
+        pathType: Prefix  
+        backend:  
+          service:  
+            name: nginx  
+            port:  
+              number: 80
+
+
+
+docker run -d --name my-container --tty=false -v /tmp:/mnt/tmp busybox
+
+
+def numberOfTokens(expiryLimit, commands):
+    # Write your code here
+    tokens={}
+    max_time=0
+    for cmd in commands:
+        cmd_type, token_id, current_time = cmd
+        max_time = max(max_time, current_time)
+        if cmd_type == 0:
+            tokens[token_id] = current_time + expiryLimit
+        elif cmd_type == 1:
+            if token_id in tokens and tokens[token_id] > current_time:
+                tokens[token_id] = current_time + expiryLimit
+    valid_tokens = sum(1 for expiry in tokens.values() if expiry > max_time)  
+    return valid_tokens
