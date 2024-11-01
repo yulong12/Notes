@@ -9,6 +9,8 @@ def convert_to_mp4(input_file, dry_run=False):
     Converts a file to mp4. Requires ffmpeg and libx264
     input_file -- The file to convert
     dry_run -- Whether to actually convert the file
+
+    
     """
     output_file = input_file + '.mp4'
     ffmpeg_command = 'ffmpeg -loglevel quiet -i "%s" -vcodec libx264 -b 700k -s 480x368 -acodec libfaac -ab 128k -ar 48000 -f mp4 -deinterlace -y -threads 4 "%s" ' % (input_file,output_file)
