@@ -1,0 +1,10 @@
+# File name: Dockerfile
+FROM rayproject/ray:2.9.0-aarch64
+
+RUN pip install Faker==18.13.0
+
+# Set the working dir for the container to /serve_app
+WORKDIR /serve_app
+
+# Copies the local `fake.py` file into the WORKDIR
+COPY fake.py /serve_app/fake.py

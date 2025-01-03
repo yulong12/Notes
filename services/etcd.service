@@ -1,0 +1,35 @@
+[Unit]
+Description=Etcd Service
+Documentation=https://etcd.io
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/etcd \
+    --name=ubuntu01 \
+    --data-dir=/var/lib/etcd \
+    --wal-dir=/var/lib/etcd \
+    --snapshot-count=10000 \
+    --advertise-client-urls=https://192.168.237.130:2379 \
+    --initial-advertise-peer-urls=https://192.168.237.130:2380 \
+    --initial-cluster=ubuntu01=https://192.168.237.130:2380 \
+    --listen-client-urls=https://127.0.0.1:2379,https://192.168.237.130:2379 \
+    --listen-metrics-urls=http://127.0.0.1:2381 \
+    --listen-peer-urls=https://192.168.237.130:2380 \
+    --client-cert-auth=true \
+    --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.pem \
+    --key-file=/etc/kubernetes/pki/etcd/etcd-key.pem \
+    --cert-file=/etc/kubernetes/pki/etcd/etcd.pem \
+    --peer-client-cert-auth=true \
+    --peer-trusted-ca-file=/etc/kubernetes/pki/etcd/ca.pem \
+    --peer-cert-file=/etc/kubernetes/pki/etcd/etcd-peer.pem \
+    --peer-key-file=/etc/kubernetes/pki/etcd/etcd-peer-key.pem \
+    --experimental-initial-corrupt-check=true \
+    --initial-cluster-state=new
+    
+
+Type=notify
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

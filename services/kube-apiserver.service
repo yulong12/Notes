@@ -1,0 +1,38 @@
+[Unit]
+Description=Kubernetes API Server
+Documentation=https://github.com/kubernetes/kubernetes
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/kube-apiserver \
+    --bind-address=192.168.237.130  \
+    --secure-port=6443 \
+    --advertise-address=192.168.237.130 \
+    --allow-privileged=true  \
+    --authorization-mode=AlwaysAllow \
+    --client-ca-file=/etc/kubernetes/pki/ca/ca.pem \
+    --enable-admission-plugins=NodeRestriction \
+    --enable-bootstrap-token-auth=true \
+    --etcd-cafile=/etc/kubernetes/pki/etcd/ca.pem  \
+    --etcd-certfile=/etc/kubernetes/pki/apiserver/etcd-client.pem  \
+    --etcd-keyfile=/etc/kubernetes/pki/apiserver/etcd-client-key.pem  \
+    --etcd-servers=https://192.168.237.130:2379 \
+    --kubelet-certificate-authority=/etc/kubernetes/pki/ca/ca.pem \
+    --kubelet-client-certificate=/etc/kubernetes/pki/apiserver/kubelet-client.pem \
+    --kubelet-client-key=/etc/kubernetes/pki/apiserver/kubelet-client-key.pem \
+    --service-account-issuer=https://kubernetes.default.svc.cluster.local \
+    --service-account-signing-key-file=/etc/kubernetes/pki/sa/sa-key.pem \
+    --service-account-key-file=/etc/kubernetes/pki/sa/sa.pem \
+    --tls-cert-file=/etc/kubernetes/pki/apiserver/apiserver.pem \
+    --tls-private-key-file=/etc/kubernetes/pki/apiserver/apiserver-key.pem \
+    --kubelet-preferred-address-types=InternalIP,Hostname \
+    --service-cluster-ip-range=10.96.0.0/16  \
+    --service-node-port-range=30000-60000 \
+    --requestheader-client-ca-file=/etc/kubernetes/pki/ca/ca.pem
+
+Type=notify
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
