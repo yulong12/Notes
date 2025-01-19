@@ -1,9 +1,9 @@
-curl -LO "https://dl.k8s.io/release/v1.32.0/bin/linux/amd64/kubectl"
-curl -LO "https://dl.k8s.io/release/v1.32.0/bin/linux/amd64/kube-apiserver"
-curl -LO "https://dl.k8s.io/release/v1.32.0/bin/linux/amd64/kube-controller-manager"
-curl -LO "https://dl.k8s.io/release/v1.32.0/bin/linux/amd64/kube-scheduler"
-curl -LO "https://dl.k8s.io/release/v1.32.0/bin/linux/amd64/kubelet"
-curl -LO "https://dl.k8s.io/release/v1.32.0/bin/linux/amd64/kube-proxy"
+curl -LO "https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubectl"
+curl -LO "https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kube-apiserver"
+curl -LO "https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kube-controller-manager"
+curl -LO "https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kube-scheduler"
+curl -LO "https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kubelet"
+curl -LO "https://dl.k8s.io/release/v1.30.0/bin/linux/amd64/kube-proxy"
 
 cfssl gencert -ca=/etc/kubernetes/pki/ca/ca.pem -ca-key=/etc/kubernetes/pki/ca/ca-key.pem -config=/etc/kubernetes/pki/ca/ca-config.json -profile=kubernetes kubelet-csr.json | cfssljson -bare kubelet
 
@@ -84,6 +84,7 @@ sudo systemctl status kube-controller-manager
 sudo systemctl daemon-reload
 sudo systemctl enable kubelet
 sudo systemctl restart kubelet
+
 sudo systemctl enable kube-proxy
 sudo systemctl restart kube-proxy
 sudo systemctl status kube-proxy
@@ -96,3 +97,10 @@ sudo apt-get install firewalld firewall-config
 sudo firewall-cmd --add-port=40006/tcp --permanent
 sudo firewall-cmd --reload
 sudo firewall-cmd --list-port
+
+
+sudo kubectl config set-cluster kubernetes \
+     --certificate-authority=/etc/kubernetes/pki/ca/ca.pem \
+     --embed-certs=true \
+     --server=https://192.168.237.130:6443 \
+     --kubeconfig=/etc/kubernetes/kubelet.kubeconfig

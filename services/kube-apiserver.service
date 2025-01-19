@@ -5,9 +5,9 @@ After=network.target
 
 [Service]
 ExecStart=/usr/local/bin/kube-apiserver \
-    --bind-address=192.168.237.130  \
+    --bind-address=192.168.237.151  \
     --secure-port=6443 \
-    --advertise-address=192.168.237.130 \
+    --advertise-address=192.168.237.151 \
     --allow-privileged=true  \
     --authorization-mode=AlwaysAllow \
     --client-ca-file=/etc/kubernetes/pki/ca/ca.pem \
@@ -16,7 +16,7 @@ ExecStart=/usr/local/bin/kube-apiserver \
     --etcd-cafile=/etc/kubernetes/pki/etcd/ca.pem  \
     --etcd-certfile=/etc/kubernetes/pki/apiserver/etcd-client.pem  \
     --etcd-keyfile=/etc/kubernetes/pki/apiserver/etcd-client-key.pem  \
-    --etcd-servers=https://192.168.237.130:2379 \
+    --etcd-servers=https://192.168.237.151:2379 \
     --kubelet-certificate-authority=/etc/kubernetes/pki/ca/ca.pem \
     --kubelet-client-certificate=/etc/kubernetes/pki/apiserver/kubelet-client.pem \
     --kubelet-client-key=/etc/kubernetes/pki/apiserver/kubelet-client-key.pem \
